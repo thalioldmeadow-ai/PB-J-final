@@ -1,0 +1,19 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Removed Firebase leftovers (unused by the app)
+.unused-backup/
+
+# Local AI usage ledger (counts and cost only, never message content)
+data/
+
+# Supabase CLI local state and one-off JSON backups
+supabase/.temp/
+.tmp/
+backups/

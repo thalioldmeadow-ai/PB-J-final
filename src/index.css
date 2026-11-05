@@ -1,0 +1,328 @@
+@import "tailwindcss";
+
+/*
+ * Type: the system stack. No webfont downloads, so the app never phones out
+ * just to render text, and no Inter / Geist / Space Grotesk.
+ */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Palette: paper, ink, brick, olive. Deep and muted, not pastel. */
+  --color-moss: #4d5441;
+  --color-moss-foreground: #f4efe3;
+  --color-rose: #8e3b4a;
+  --color-rose-foreground: #f4efe3;
+  --color-sky: #2c4f63;
+  --color-sky-foreground: #f4efe3;
+  --color-lavender: #5a4433;
+  --color-lavender-foreground: #f4efe3;
+  --color-sand: #d9cdb8;
+  --color-almond: #e9e2d6;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+
+  /* Corners stay crisp. Nothing is pill-shaped, nothing is softly rounded. */
+  --radius-xs: 1px;
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+  --radius-2xl: 2px;
+  --radius-3xl: 2px;
+  --radius-4xl: 2px;
+
+  /* No drop shadows anywhere. Depth comes from rules and tone, not glow. */
+  --shadow-2xs: none;
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-2xl: none;
+}
+
+@layer base {
+  :root {
+    --background: #e9e2d6;
+    --foreground: #191613;
+    --primary: #7c3b23;
+    --primary-foreground: #f6f1e7;
+    --secondary: #d9cdb8;
+    --secondary-foreground: #191613;
+    --accent: #38452f;
+    --accent-foreground: #f6f1e7;
+    --muted: #ded5c5;
+    --muted-foreground: #6a5a47;
+    --card: #f2ede3;
+    --card-foreground: #191613;
+    --border: #c6b79e;
+    --destructive: #8e2b1d;
+    --radius: 2px;
+  }
+
+  .theme-beige {
+    --background: #e9e2d6;
+    --foreground: #191613;
+    --primary: #7c3b23;
+    --primary-foreground: #f6f1e7;
+    --secondary: #d9cdb8;
+    --secondary-foreground: #191613;
+    --accent: #38452f;
+    --accent-foreground: #f6f1e7;
+    --muted: #ded5c5;
+    --muted-foreground: #6a5a47;
+    --card: #f2ede3;
+    --border: #c6b79e;
+  }
+
+  .theme-vibrant,
+  .theme-orange {
+    --background: #f0e2cf;
+    --foreground: #2a1409;
+    --primary: #a8401a;
+    --primary-foreground: #fbf3e6;
+    --secondary: #dcc0a0;
+    --secondary-foreground: #2a1409;
+    --accent: #74290f;
+    --accent-foreground: #fbf3e6;
+    --card: #f6e9d7;
+    --card-foreground: #2a1409;
+    --muted: #e5d0b4;
+    --muted-foreground: #7a4a2a;
+    --border: #cfa982;
+    --destructive: #8e1f1f;
+  }
+
+  .theme-green {
+    --background: #e2e5d6;
+    --foreground: #16200f;
+    --primary: #3c5a34;
+    --primary-foreground: #f2f4e8;
+    --secondary: #c3cdb0;
+    --secondary-foreground: #16200f;
+    --accent: #273f22;
+    --accent-foreground: #f2f4e8;
+    --card: #ecf0e1;
+    --card-foreground: #16200f;
+    --muted: #d2dac2;
+    --muted-foreground: #45543a;
+    --border: #adb99a;
+  }
+
+  .theme-blue {
+    --background: #dde3e6;
+    --foreground: #0d1c24;
+    --primary: #2c4f63;
+    --primary-foreground: #eff4f6;
+    --secondary: #bccbd3;
+    --secondary-foreground: #0d1c24;
+    --accent: #1d3a4a;
+    --accent-foreground: #eff4f6;
+    --card: #e8eef1;
+    --card-foreground: #0d1c24;
+    --muted: #cdd8de;
+    --muted-foreground: #3f5b69;
+    --border: #a7b8c2;
+  }
+
+  .theme-pink {
+    --background: #ecdfda;
+    --foreground: #2a1218;
+    --primary: #8a3948;
+    --primary-foreground: #f9eff0;
+    --secondary: #d6bdb8;
+    --secondary-foreground: #2a1218;
+    --accent: #66232f;
+    --accent-foreground: #f9eff0;
+    --card: #f2e8e4;
+    --card-foreground: #2a1218;
+    --muted: #dfccc7;
+    --muted-foreground: #6b4049;
+    --border: #c9aaa4;
+  }
+
+  .theme-dark {
+    --background: #14120f;
+    --foreground: #e7ded0;
+    --primary: #c17a45;
+    --primary-foreground: #14120f;
+    --secondary: #2b2620;
+    --secondary-foreground: #e7ded0;
+    --accent: #9aab84;
+    --accent-foreground: #14120f;
+    --card: #1c1915;
+    --card-foreground: #e7ded0;
+    --muted: #262119;
+    --muted-foreground: #a2968a;
+    --border: #3a342b;
+  }
+
+  .font-size-small { font-size: 0.875rem; }
+  .font-size-medium { font-size: 1rem; }
+  .font-size-large { font-size: 1.125rem; }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  html,
+  body {
+    /* Allow panning and scrolling, but never pinch- or double-tap zoom */
+    touch-action: pan-x pan-y;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+
+  /* Keyboard users get a visible ring on every focusable control. */
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  /* Respect the OS setting instead of animating regardless. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .card {
+    background-color: var(--card);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: none;
+    border: 1px solid var(--border);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.4rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border-color: var(--primary);
+  }
+
+  .btn-secondary {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    background: transparent;
+  }
+
+  .input {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    color: var(--foreground);
+  }
+
+  .input:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+  }
+}
+
+/*
+ * Unlayered guard rails: these beat utility classes, so a stray pill or pure
+ * white surface in a page can never win. Kept deliberately short.
+ */
+.rounded-full,
+.rounded-t-full,
+.rounded-b-full {
+  border-radius: 0;
+}
+
+.bg-white,
+.bg-white\/5,
+.bg-white\/10,
+.bg-white\/20,
+.bg-white\/60,
+.bg-white\/70,
+.bg-white\/80,
+.bg-white\/90 {
+  background-color: var(--card);
+}
+
+.,
+.,
+.,
+.,
+.,
+.{
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* Custom scrollbar, kept quiet */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
